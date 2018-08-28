@@ -1,5 +1,6 @@
 
-  
+import uniq from 'lodash/uniq';
+import { RECEIVE_POSTS } from '../config/constants';
   
 const initialState = {
 	allIds: [],
@@ -9,9 +10,11 @@ const initialState = {
   
 const reddit = (state = initialState, action) => {
 	switch (action.type) {
-		case 'RECEIVE_POSTS':
+		case RECEIVE_POSTS:
 			return {
-				byId: action.data
+				...state,
+				allIds: uniq(state.allIds.concat(action.allIds)),
+				byId: { ...state.byId, ...action.byId },
 			}
 		default:
 		return state;

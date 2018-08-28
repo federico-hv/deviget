@@ -20,7 +20,7 @@ class Reddit extends Component {
 						<ul>
 							{
 								posts.map((el, i) => (
-									<li>
+									<li key={i}>
 										<div>
 											<div>
 												<img src={el.thumbnail} alt=""/>

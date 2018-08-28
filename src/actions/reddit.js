@@ -1,16 +1,19 @@
 import { serviceFetchPosts } from '../services/reddit';
+import { normalize } from '../utils/normalize';
+import { RECEIVE_POSTS } from '../config/constants';
 
-const receivePosts = (res) => ({
-  type: 'RECEIVE_POSTS',
-  data: res.data.children.map(el => el.data)
+const receivePosts = ({allIds, byId}) => ({
+  type: RECEIVE_POSTS,
+  allIds,
+  byId
 });
 
 export const fetchPosts = () => {
   return async (dispatch, getState) => {
     try {
-			const res = await serviceFetchPosts();
-			console.log('RESP: ', res.data.children);
-      dispatch(receivePosts(res));
+      const res = await serviceFetchPosts();
+      const normalizedPosts = normalize(res.data);
+      dispatch(receivePosts(normalizedPosts));
     }catch(err){
       throw new Error(err);
     }
