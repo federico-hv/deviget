@@ -3,6 +3,7 @@ import * as redditActions from '../../actions/reddit';
 import { connect } from 'react-redux';
 import { formatTimeToString } from '../../utils/time';
 import includes from 'lodash/includes';
+import { IoIosCloseCircleOutline } from 'react-icons/io';
 import './styles.css';
 
 class Post extends Component {
@@ -22,8 +23,8 @@ class Post extends Component {
   render() {
     const {post, checkRedditPost, readPost } = this.props;
     return(
-      <li onClick={()=>checkRedditPost(post.id)}>
-        <div className={this.state.dismissed ? 'post dismissed' : 'post'}>
+      <li onClick={()=>checkRedditPost(post.id)} className={this.state.dismissed ? 'post dismissed' : 'post'}>
+        <div>
           <div className="line-one">
             <div className={readPost ? 'old-post' : 'new-post'}></div>
             <div className="author">{post.author}</div>
@@ -37,7 +38,7 @@ class Post extends Component {
             <div className="dismiss-btn" onClick={(e)=>{
               e.stopPropagation();
               this.dismiss(post.id);
-            }}>Dismiss Post</div>
+            }}><IoIosCloseCircleOutline color="#8c5230" size="1.5em"/> Dismiss Post</div>
             <div>Comments {post.num_comments}</div>
           </div>
         </div>
@@ -53,3 +54,5 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 export default connect(mapStateToProps, redditActions)(Post);
+
+

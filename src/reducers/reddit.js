@@ -6,6 +6,7 @@ import {
 } from '../config/constants';
 import uniq from 'lodash/uniq';
 
+
 const initialState = {
   allIds: [],
   removedIds: [],
@@ -13,6 +14,7 @@ const initialState = {
   byId: {},
   visiblePost: null
 };
+
 
 const reddit = (state = initialState, action) => {
   switch (action.type) {

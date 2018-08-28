@@ -4,8 +4,8 @@
   background-color: black;
   border-bottom: 1px solid white;
   color: white;
-  -webkit-transition: margin-left 1s; /* Safari */
-  transition: margin-left 1s;
+  -webkit-transition: margin-left 0.5s, opacity 1s; /* Safari */
+  transition: margin-left 0.5s, opacity 1s;
 }
 
 .line-one,.line-two,.line-three {
@@ -38,6 +38,10 @@
 .line-three {
 
 } */
+
+.dismiss-btn {
+  display: flex;
+}
 
 .title {
   display: flex;
