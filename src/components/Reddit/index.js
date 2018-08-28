@@ -5,13 +5,12 @@ import * as redditActions from '../../actions/reddit';
 class Reddit extends Component {
 
 	componentDidMount() {
-		const { dispatch, fetchPosts } = this.props;
-		dispatch(fetchPosts());
+		this.props.fetchPosts();
 	}	
 
 	render() {
-		const { posts } = this.props;
-
+		const { posts, dismissPost } = this.props;
+		console.log(dismissPost, 'DUUU')
 		return (
 			<div>
 				<div>
@@ -27,7 +26,7 @@ class Reddit extends Component {
 												<div>{el.title}</div>
 											</div>
 											<div>
-												<div>Dismiss Post</div>
+												<button onClick={()=>dismissPost(el.id)}>Dismiss Post</button>
 												<div>Comments {el.num_comments}</div>
 											</div>
 										</div>
@@ -46,13 +45,18 @@ class Reddit extends Component {
 
 
 const mapStateToProps = (state) => ({
-  posts: Object.keys(state.reddit.byId).map(key => state.reddit.byId[key])
+  posts: state.reddit.allIds.filter(el => {
+    if (state.reddit.removedIds.includes(el)) return false;
+    return true;
+  }).reduce((acc, key, ind) => {
+    acc[ind] = state.reddit.byId[key];
+    return acc;
+  }, [])
 });
 
-const mapDispatchToProps = (dispatch) => Object.assign({}, redditActions, { dispatch });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  redditActions
 )(Reddit);
 

@@ -1,12 +1,22 @@
 import { serviceFetchPosts } from '../services/reddit';
 import { normalize } from '../utils/normalize';
-import { RECEIVE_POSTS } from '../config/constants';
+import { RECEIVE_POSTS, DISMISS_POST } from '../config/constants';
+
+
 
 const receivePosts = ({allIds, byId}) => ({
   type: RECEIVE_POSTS,
   allIds,
   byId
 });
+
+export const dismissPost = (id) => {
+	console.log(id)
+	return {
+		type: DISMISS_POST,
+		id
+	};
+}
 
 export const fetchPosts = () => {
   return async (dispatch, getState) => {
