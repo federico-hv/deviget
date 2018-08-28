@@ -1,0 +1,27 @@
+.visible-post {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.image {
+  max-width: 300px;
+  max-height: 500px;
+}
+
+.post-author,.post-title {
+  padding: 20px;
+}
+
+
+@media screen and (min-width: 1200px) {
+
+  .visible-post {
+    flex: 4;
+  }
+
+}

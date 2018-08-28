@@ -20,3 +20,47 @@
   justify-content: space-around;
 }
 
+/* 
+.line-one {
+
+}
+
+.line-two {
+  
+} */
+
+.line-two img {
+  max-width: 100px;
+  max-height: 150px;
+  margin-left: 0;
+}
+/* 
+.line-three {
+
+} */
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.dismissed {
+  position: absolute;
+  margin-left: -1000px;
+  opacity: 0.5;
+}
+
+.new-post {
+  width: 10px;
+  height: 10px;
+  border-radius: 30px;
+  opacity: 1;
+  margin: 5px 0px;
+  background: blue;
+}
+
+.old-post {
+  opacity: 0;
+}

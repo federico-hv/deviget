@@ -1,6 +1,7 @@
 import React from 'react';
 import Post from '../Post';
 import v4 from 'uuid';
+import './styles.css';
 
 const PostList = ({posts}) => (
 	<div>

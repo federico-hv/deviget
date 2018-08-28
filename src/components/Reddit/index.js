@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import * as redditActions from '../../actions/reddit'; 
 import PostList from '../PostList';
 import VisiblePost from '../VisiblePost';
-
+import './styles.css';
 
 class Reddit extends Component {
 
@@ -15,11 +15,11 @@ class Reddit extends Component {
 		const { posts, visiblePost, dismissAll, checkRedditPost } = this.props;
 
 		return (
-			<div style={{display: 'flex'}}>
-				<div style={{ flex: 1 }}>
-					<div>Reddit Posts</div>
-					<PostList posts={posts}/>
-					<button onClick={dismissAll}>Dismiss all</button>
+			<div className="reddit-app">
+				<div className={"list-container"}>
+					<div className="list-title">Reddit Posts</div>
+					<PostList posts={posts} className={"thumbnail-list"} />
+					<div className="dismiss-all" onClick={dismissAll}>Dismiss all</div>
 				</div>
 				<VisiblePost post={visiblePost}  />
 			</div>
