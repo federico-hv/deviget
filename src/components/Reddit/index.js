@@ -1,7 +1,9 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import * as redditActions from '../../actions/reddit'; 
+import PostList from '../PostList';
 import VisiblePost from '../VisiblePost';
+
 
 class Reddit extends Component {
 
@@ -16,30 +18,7 @@ class Reddit extends Component {
 			<div style={{display: 'flex'}}>
 				<div style={{ flex: 1 }}>
 					<div>Reddit Posts</div>
-					<div>
-						<ul>
-							{
-								posts.map((el, i) => (
-									<li key={i} onClick={()=>checkRedditPost(el.id)} style={{border: '1px solid purple'}}>
-										<div>
-											<div>
-												<div>{el.author}</div>
-												<div>{el.created_utc}</div>
-											</div>
-											<div>
-												<img src={el.thumbnail} alt=""/>
-												<div>{el.title}</div>
-											</div>
-											<div>
-												<button onClick={()=>dismissPost(el.id)}>Dismiss Post</button>
-												<div>Comments {el.num_comments}</div>
-											</div>
-										</div>
-									</li>
-								))
-							}
-						</ul>
-					</div>
+					<PostList posts={posts}/>
 					<button onClick={dismissAll}>Dismiss all</button>
 				</div>
 				<VisiblePost post={visiblePost}  />
