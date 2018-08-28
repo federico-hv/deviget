@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as redditActions from '../../actions/reddit'; 
+import includes from 'lodash/includes';
 import './styles.css';
 
 class Post extends Component {
@@ -20,13 +21,12 @@ class Post extends Component {
 
 	render() {
 
-		const { data, checkRedditPost, dismissPost } = this.props;
-
-		return (
-			<li onClick={()=>checkRedditPost(data.id)}>
+		const {data, checkRedditPost, readPost } = this.props;
+    return(
+      <li onClick={()=>checkRedditPost(data.id)}>
         <div className={this.state.dismissed ? 'post dismissed' : 'post'}>
           <div className="line-one">
-            <div className={'new-post'}></div>
+            <div className={readPost ? 'old-post' : 'new-post'}></div>
             <div className="author">{data.author}</div>
             <div>{data.created_utc}</div>
           </div>
@@ -35,6 +35,7 @@ class Post extends Component {
            <div className="title">{data.title}</div>
           </div>
           <div className="line-three">
+            {/* <IoIosCloseCircleOutline color="#8c5230" size="1.5em"/> */}
             <div className="dismiss-btn" onClick={(e)=>{
               e.stopPropagation();
               this.dismiss(data.id);
@@ -43,10 +44,16 @@ class Post extends Component {
           </div>
         </div>
       </li>
-		)
+    );
 	}
 }
 
+const mapStateToProps = (state, ownProps) => { 
+  return {
+    readPost: includes(state.reddit.readPosts, ownProps.data.id)
+  }
+};
 
-export default connect(null, redditActions)(Post);
+
+export default connect(mapStateToProps, redditActions)(Post);
 

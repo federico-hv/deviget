@@ -1,9 +1,3 @@
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
 .thumbnail-list {
   flex: 10;
   overflow: scroll;
@@ -11,3 +5,8 @@ ul {
   transition: margin-left 2s;
 }
 
+.all-dismissed {
+  margin-left: -1000px;
+  opacity: 0.5;
+  /* flex: 0; */
+}

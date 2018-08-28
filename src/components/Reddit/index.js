@@ -7,19 +7,29 @@ import './styles.css';
 
 class Reddit extends Component {
 
+	state = {
+    allDismissed: false
+  };
+
 	componentDidMount() {
 		this.props.fetchPosts();
 	}	
 
+	dismissAll = () => {
+    this.setState({ allDismissed: true },function(){
+      setTimeout(this.props.dismissAll, 500)
+    });
+  }
+
 	render() {
-		const { posts, visiblePost, dismissAll, checkRedditPost } = this.props;
+		const { posts, visiblePost, checkRedditPost } = this.props;
 
 		return (
 			<div className="reddit-app">
 				<div className={"list-container"}>
 					<div className="list-title">Reddit Posts</div>
-					<PostList posts={posts} className={"thumbnail-list"} />
-					<div className="dismiss-all" onClick={dismissAll}>Dismiss all</div>
+					<PostList posts={posts} className={this.state.allDismissed ? 'thumbnail-list all-dismissed' : 'thumbnail-list'} />
+					<div className="dismiss-all" onClick={this.dismissAll}>Dismiss all</div>
 				</div>
 				<VisiblePost post={visiblePost}  />
 			</div>
