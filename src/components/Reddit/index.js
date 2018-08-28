@@ -9,8 +9,8 @@ class Reddit extends Component {
 	}	
 
 	render() {
-		const { posts, dismissPost } = this.props;
-		console.log(dismissPost, 'DUUU')
+		const { posts, dismissPost, dismissAll } = this.props;
+		
 		return (
 			<div>
 				<div>
@@ -35,7 +35,7 @@ class Reddit extends Component {
 							}
 						</ul>
 					</div>
-					<div>Dismiss all</div>
+					<button onClick={dismissAll}>Dismiss all</button>
 				</div>
 			</div>
 		);

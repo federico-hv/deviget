@@ -1,6 +1,6 @@
 import { serviceFetchPosts } from '../services/reddit';
 import { normalize } from '../utils/normalize';
-import { RECEIVE_POSTS, DISMISS_POST } from '../config/constants';
+import { RECEIVE_POSTS, DISMISS_POST, DISMISS_ALL } from '../config/constants';
 
 
 
@@ -8,6 +8,10 @@ const receivePosts = ({allIds, byId}) => ({
   type: RECEIVE_POSTS,
   allIds,
   byId
+});
+
+export const dismissAll = () => ({
+  type: DISMISS_ALL
 });
 
 export const dismissPost = (id) => {
