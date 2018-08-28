@@ -1,6 +1,7 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import * as redditActions from '../../actions/reddit'; 
+import VisiblePost from '../VisiblePost';
 
 class Reddit extends Component {
 
@@ -41,11 +42,7 @@ class Reddit extends Component {
 					</div>
 					<button onClick={dismissAll}>Dismiss all</button>
 				</div>
-				<div style={{ flex: 10 }}>
-					<div>{visiblePost ? visiblePost.author : null}</div>
-					<div>{visiblePost ? <img src={visiblePost.thumbnail} alt=""/> : null	}</div>
-					<div>{visiblePost ? visiblePost.title : null}</div>
-				</div>
+				<VisiblePost post={visiblePost}  />
 			</div>
 		);
 	}

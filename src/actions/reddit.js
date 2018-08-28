@@ -10,17 +10,14 @@ const receivePosts = ({allIds, byId}) => ({
   byId
 });
 
+export const dismissPost = (id) => ({
+  type: DISMISS_POST,
+  id
+});
+
 export const dismissAll = () => ({
   type: DISMISS_ALL
 });
-
-export const dismissPost = (id) => {
-	console.log(id)
-	return {
-		type: DISMISS_POST,
-		id
-	};
-}
 
 export const checkRedditPost = (id) => ({
   type: CHECK_POST,
