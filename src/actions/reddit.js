@@ -1,6 +1,6 @@
 import { serviceFetchPosts } from '../services/reddit';
 import { normalize } from '../utils/normalize';
-import { RECEIVE_POSTS, DISMISS_POST, DISMISS_ALL } from '../config/constants';
+import { RECEIVE_POSTS, DISMISS_POST, DISMISS_ALL, CHECK_POST } from '../config/constants';
 
 
 
@@ -21,6 +21,11 @@ export const dismissPost = (id) => {
 		id
 	};
 }
+
+export const checkRedditPost = (id) => ({
+  type: CHECK_POST,
+  id
+});
 
 export const fetchPosts = () => {
   return async (dispatch, getState) => {

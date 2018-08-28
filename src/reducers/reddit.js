@@ -1,11 +1,12 @@
 
 import uniq from 'lodash/uniq';
-import { RECEIVE_POSTS, DISMISS_POST, DISMISS_ALL } from '../config/constants';
+import { RECEIVE_POSTS, DISMISS_POST, DISMISS_ALL, CHECK_POST } from '../config/constants';
   
 const initialState = {
 	allIds: [],
 	byId: {},
-	removedIds: []
+	removedIds: [],
+	visiblePost: null
 };
   
   
@@ -25,7 +26,13 @@ const reddit = (state = initialState, action) => {
 		case DISMISS_ALL:
       return {
         ...state,
-        removedIds: state.allIds
+				removedIds: state.allIds,
+				visiblePost: null
+			}
+		case CHECK_POST: 
+      return {
+        ...state,
+        visiblePost: state.byId[action.id]
       }
 		default:
 		return state;
