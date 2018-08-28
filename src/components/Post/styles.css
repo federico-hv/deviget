@@ -1,0 +1,22 @@
+.post {
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  border-bottom: 1px solid white;
+  color: white;
+  -webkit-transition: margin-left 1s; /* Safari */
+  transition: margin-left 1s;
+}
+
+.line-one,.line-two,.line-three {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.line-one,.line-three {
+  padding: 5px 0px;
+  justify-content: space-around;
+}
+

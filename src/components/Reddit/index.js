@@ -12,7 +12,7 @@ class Reddit extends Component {
 	}	
 
 	render() {
-		const { posts, visiblePost, dismissPost, dismissAll, checkRedditPost } = this.props;
+		const { posts, visiblePost, dismissAll, checkRedditPost } = this.props;
 
 		return (
 			<div style={{display: 'flex'}}>
