@@ -5,8 +5,10 @@
   transition: margin-left 2s;
 }
 
+
 .all-dismissed {
   margin-left: -1000px;
   opacity: 0.5;
   /* flex: 0; */
 }
+ 
